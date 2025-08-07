@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hope For All | NGO</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2c6e49;
+            --secondary: #4c956c;
+            --accent: #fefee3;
+            --light: #d8f3dc;
+            --dark: #1b4332;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        .navbar {
+            background-color: var(--primary);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            color: white !important;
+        }
+
+        .nav-link {
+            color: rgba(255, 255, 255, 0.85) !important;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .nav-link:hover {
+            color: white !important;
+            transform: translateY(-2px);
+        }
+
+        .hero {
+            background: linear-gradient(rgba(44, 110, 73, 0.8), rgba(27, 67, 50, 0.9)), url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 120px 0 80px;
+            color: white;
+            text-align: center;
+        }
+
+        .section-title {
+            position: relative;
+            margin-bottom: 40px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .section-title:after {
+            content: "";
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: var(--secondary);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .card {
+            border: none;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-bottom: 25px;
+            height: 100%;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-img-top {
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-title {
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            border: none;
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--dark);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-outline-primary {
+            color: var(--primary);
+            border-color: var(--primary);
+            border-radius: 30px;
+            padding: 10px 25px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-outline-primary:hover {
+            background-color: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-section {
+            background-color: var(--light);
+            padding: 80px 0;
+        }
+
+        .volunteer-form {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .form-control {
+            padding: 12px 15px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            margin-bottom: 20px;
+        }
+
+        .form-control:focus {
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 0.25rem rgba(76, 149, 108, 0.25);
+        }
+
+        .about-section {
+            padding: 80px 0;
+        }
+
+        .mission-box {
+            background: linear-gradient(135deg, var(--primary), var(--dark));
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            height: 100%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .stats {
+            background-color: var(--secondary);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .testimonial {
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin: 15px 0;
+        }
+
+        .testimonial img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 20px;
+        }
+
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-title {
+            font-weight: 600;
+            margin-bottom: 25px;
+            font-size: 1.2rem;
+            position: relative;
+        }
+
+        .footer-title:after {
+            content: "";
+            position: absolute;
+            width: 40px;
+            height: 3px;
+            background: var(--secondary);
+            bottom: -8px;
+            left: 0;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            margin-right: 10px;
+            transition: all 0.3s;
+        }
+
+        .social-icon:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+            margin-top: 40px;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .stat-number {
+                font-size: 2.5rem;
+            }
+
+            .section-title:after {
+                width: 60px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-hands-helping me-2"></i>Hope For All
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#volunteer">Volunteer</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                    <li class="nav-item ms-2">
+                        <a class="btn btn-outline-light" href="#donate">Donate</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <h1 class="display-4 fw-bold mb-4">Together We Can Make a Difference</h1>
+                    <p class="lead mb-5">Join us in our mission to create lasting change in communities around the
+                        world. Every action counts.</p>
+                    <div class="d-flex justify-content-center gap-3">
+                        <a href="#volunteer" class="btn btn-primary btn-lg px-4 py-2">Become a Volunteer</a>
+                        <a href="#donate" class="btn btn-outline-light btn-lg px-4 py-2">Donate Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Causes Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8 text-center">
+                    <h2 class="section-title">Our Causes</h2>
+                    <p class="text-muted">We focus on the most pressing issues affecting vulnerable communities
+                        worldwide.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="https://images.unsplash.com/photo-1522071901873-411886a10004?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80"
+                            class="card-img-top" alt="Education">
+                        <div class="card-body">
+                            <h5 class="card-title">Education for All</h5>
+                            <p class="card-text">Providing quality education to children in underserved communities,
+                                building schools and training teachers.</p>
+                            <a href="#" class="btn btn-outline-primary">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80"
+                            class="card-img-top" alt="Clean Water">
+                        <div class="card-body">
+                            <h5 class="card-title">Clean Water Access</h5>
+                            <p class="card-text">Bringing clean, safe drinking water to communities through sustainable
+                                well projects and filtration systems.</p>
+                            <a href="#" class="btn btn-outline-primary">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="https://images.unsplash.com/photo-1584515933487-779824d29309?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80"
+                            class="card-img-top" alt="Food Security">
+                        <div class="card-body">
+                            <h5 class="card-title">Food Security</h5>
+                            <p class="card-text">Creating sustainable food sources and nutrition programs to combat
+                                hunger in vulnerable communities.</p>
+                            <a href="#" class="btn btn-outline-primary">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-3 col-6 mb-4 mb-md-0">
+                    <div class="stat-number">25+</div>
+                    <div class="stat-label">Countries</div>
+                </div>
+                <div class="col-md-3 col-6 mb-4 mb-md-0">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">Projects</div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-number">10,000+</div>
+                    <div class="stat-label">Volunteers</div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-number">1M+</div>
+                    <div class="stat-label">Lives Impacted</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Volunteer Form Section -->
+    <section id="volunteer" class="form-section">
+        <div class="container">
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8 text-center">
+                    <h2 class="section-title">Join Our Team</h2>
+                    <p class="text-muted">Fill out the form below to become a volunteer and make a difference in your
+                        community.</p>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="volunteer-form">
+                        <form>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" placeholder="First Name" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" placeholder="Last Name" required>
+                                </div>
+                            </div>
+                            <input type="email" class="form-control" placeholder="Email Address" required>
+                            <input type="tel" class="form-control" placeholder="Phone Number">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <select class="form-control" required>
+                                        <option value="" disabled selected>Select Your Country</option>
+                                        <option>United States</option>
+                                        <option>Canada</option>
+                                        <option>United Kingdom</option>
+                                        <option>Australia</option>
+                                        <option>India</option>
+                                        <option>Other</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" placeholder="City">
+                                </div>
+                            </div>
+                            <select class="form-control" required>
+                                <option value="" disabled selected>Area of Interest</option>
+                                <option>Education</option>
+                                <option>Environment</option>
+                                <option>Healthcare</option>
+                                <option>Disaster Relief</option>
+                                <option>Fundraising</option>
+                                <option>Administration</option>
+                            </select>
+                            <textarea class="form-control" rows="4"
+                                placeholder="Why do you want to volunteer with us?"></textarea>
+                            <div class="form-check mt-3 mb-4">
+                                <input class="form-check-input" type="checkbox" id="terms" required>
+                                <label class="form-check-label" for="terms">
+                                    I agree to the terms and conditions
+                                </label>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100 py-3 fw-bold">Submit Application</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8 text-center">
+                    <h2 class="section-title">About Our NGO</h2>
+                    <p class="text-muted">Learn about our mission, vision, and the team behind Hope For All.</p>
+                </div>
+            </div>
+            <div class="row align-items-center mb-5">
+                <div class="col-lg-6">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80"
+                        alt="Our Team" class="img-fluid rounded shadow">
+                </div>
+                <div class="col-lg-6 mt-5 mt-lg-0">
+                    <h3 class="mb-4">Our Story</h3>
+                    <p>Founded in 2005, Hope For All began as a small group of passionate individuals determined to make
+                        a difference in the lives of the most vulnerable. What started as local community initiatives
+                        has grown into an international organization with projects in over 25 countries.</p>
+                    <p>Our journey has been fueled by the belief that every person deserves access to basic human
+                        rights: clean water, nutritious food, quality education, and healthcare. Over the years, we've
+                        developed sustainable programs that create lasting change rather than temporary solutions.</p>
+                    <p>Today, with the support of thousands of volunteers and donors worldwide, we continue to expand
+                        our reach and deepen our impact, always guided by our core values of compassion, integrity, and
+                        empowerment.</p>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <div class="mission-box">
+                        <div class="text-center mb-4">
+                            <i class="fas fa-bullseye fa-3x mb-3"></i>
+                            <h3>Our Mission</h3>
+                        </div>
+                        <p>To empower communities to overcome poverty and injustice through sustainable solutions that
+                            create lasting change. We work alongside local partners to develop programs that address
+                            root causes rather than symptoms.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <div class="mission-box">
+                        <div class="text-center mb-4">
+                            <i class="fas fa-eye fa-3x mb-3"></i>
+                            <h3>Our Vision</h3>
+                        </div>
+                        <p>A world where every person has the opportunity to thrive, regardless of their circumstances.
+                            We envision communities that are resilient, self-sufficient, and equipped to build better
+                            futures for generations to come.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="mission-box">
+                        <div class="text-center mb-4">
+                            <i class="fas fa-hand-holding-heart fa-3x mb-3"></i>
+                            <h3>Our Values</h3>
+                        </div>
+                        <ul class="ps-0" style="list-style: none;">
+                            <li class="mb-2"><i class="fas fa-check-circle me-2"></i> Compassion & Empathy</li>
+                            <li class="mb-2"><i class="fas fa-check-circle me-2"></i> Integrity & Transparency</li>
+                            <li class="mb-2"><i class="fas fa-check-circle me-2"></i> Collaboration & Partnership</li>
+                            <li class="mb-2"><i class="fas fa-check-circle me-2"></i> Innovation & Sustainability</li>
+                            <li><i class="fas fa-check-circle me-2"></i> Empowerment & Dignity</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8 text-center">
+                    <h2 class="section-title">What Volunteers Say</h2>
+                    <p class="text-muted">Hear from those who have joined our mission.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="testimonial">
+                        <div class="d-flex align-items-center mb-3">
+                            <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Sarah">
+                            <div>
+                                <h5 class="mb-0">Sarah Johnson</h5>
+                                <p class="text-muted mb-0">Volunteer since 2018</p>
+                            </div>
+                        </div>
+                        <p>"Volunteering with Hope For All has been the most rewarding experience of my life. Seeing the
+                            direct impact of our work on children's education in rural communities is incredibly
+                            fulfilling."</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial">
+                        <div class="d-flex align-items-center mb-3">
+                            <img src="https://randomuser.me/api/portraits/men/54.jpg" alt="David">
+                            <div>
+                                <h5 class="mb-0">David Chen</h5>
+                                <p class="text-muted mb-0">Volunteer since 2020</p>
+                            </div>
+                        </div>
+                        <p>"The training and support provided to volunteers is exceptional. I've developed new skills
+                            while contributing to meaningful projects that truly make a difference in people's lives."
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial">
+                        <div class="d-flex align-items-center mb-3">
+                            <img src="https://randomuser.me/api/portraits/women/67.jpg" alt="Maria">
+                            <div>
+                                <h5 class="mb-0">Maria Rodriguez</h5>
+                                <p class="text-muted mb-0">Volunteer since 2019</p>
+                            </div>
+                        </div>
+                        <p>"What sets this organization apart is their commitment to sustainable solutions. We're not
+                            just providing aid, we're building capacity and empowering communities for long-term
+                            success."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-5 mb-lg-0">
+                    <h4 class="footer-title">Hope For All</h4>
+                    <p>Creating sustainable change in communities worldwide through empowerment, education, and
+                        essential resource provision.</p>
+                    <div class="mt-4">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-5 mb-md-0">
+                    <h4 class="footer-title">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#volunteer">Volunteer</a></li>
+                        <li><a href="#">Causes</a></li>
+                        <li><a href="#">Events</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-4 mb-5 mb-md-0">
+                    <h4 class="footer-title">Our Programs</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Education Initiatives</a></li>
+                        <li><a href="#">Clean Water Projects</a></li>
+                        <li><a href="#">Food Security</a></li>
+                        <li><a href="#">Healthcare Access</a></li>
+                        <li><a href="#">Disaster Response</a></li>
+                        <li><a href="#">Women Empowerment</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-4">
+                    <h4 class="footer-title">Contact Us</h4>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt me-2"></i> 123 Charity St, New York, NY</li>
+                        <li><i class="fas fa-phone me-2"></i> +1 (555) 123-4567</li>
+                        <li><i class="fas fa-envelope me-2"></i> info@hopeforall.org</li>
+                    </ul>
+                    <div class="mt-4">
+                        <a href="#donate" class="btn btn-primary w-100">Donate Now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="copyright">
+                        <p>&copy; 2023 Hope For All. All Rights Reserved. | Designed with <i
+                                class="fas fa-heart text-danger"></i> for a better world</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
